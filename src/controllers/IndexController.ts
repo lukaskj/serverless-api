@@ -1,12 +1,11 @@
-import { Body, Controller, Get, Post } from "routing-controllers";
+import { Body, Get, JsonController, Post } from "routing-controllers";
+import { Result, ResultSuccess } from "../contracts/result/result";
 
-@Controller()
+@JsonController()
 export class IndexController {
   @Get("/")
-  index(): unknown {
-    return {
-      success: true,
-    };
+  index(): Result<unknown> {
+    return new ResultSuccess();
   }
 
   @Post("/")
