@@ -26,7 +26,7 @@
   },
   "rules": {
     "@typescript-eslint/ban-types": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": ["error"],
     "@typescript-eslint/no-explicit-any": ["error"]
   }
 }
