@@ -2,7 +2,7 @@
   "clearMocks": true,
   "collectCoverage": true,
   "coverageDirectory": "reports/coverage",
-  "collectCoverageFrom": ["src/**/*.ts", "!src/app.ts", "!src/server.ts"],
+  "collectCoverageFrom": ["src/**/*.ts", "!src/app.ts", "!src/server.ts", "!src/localServer.ts"],
   "coverageReporters": [["text", { "skipFull": true }], "text-summary", "lcov"],
   "preset": "ts-jest",
   "testEnvironment": "node",
