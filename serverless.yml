@@ -25,6 +25,8 @@ provider:
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   region: sa-east-1
+  memorySize: 128
+  versionFunctions: false
 
 # you can overwrite defaults here
 #  stage: dev
@@ -60,6 +62,7 @@ provider:
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-offline
 
 functions:
   api:
