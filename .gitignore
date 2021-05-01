@@ -1,1 +1,8 @@
-node_modules
+/.idea/
+/node_modules/
+/dist/
+.build
+/reports/
+.env
+package.old.json
+.serverless

@@ -21,10 +21,10 @@ service: api-test
 frameworkVersion: "2"
 
 provider:
-   name: aws
-   runtime: nodejs12.x
-   lambdaHashingVersion: 20201221
-   region: sa-east-1
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  region: sa-east-1
 
 # you can overwrite defaults here
 #  stage: dev
@@ -59,11 +59,15 @@ provider:
 #    - include-me-dir/**
 
 plugins:
-   - serverless-plugin-typescript
+  - serverless-plugin-typescript
 
 functions:
-   hello:
-      handler: handler.hello
+  api:
+    handler: index.main
+    events:
+      - httpApi:
+          path: /{any+}
+          method: "*"
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
