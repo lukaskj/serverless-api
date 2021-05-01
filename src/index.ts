@@ -1,14 +1,15 @@
+import "reflect-metadata";
 import { server } from "./server";
-import serverless from "serverless-http";
 import ServerlessHttp from "serverless-http";
 // Cache
 let hdlr: ServerlessHttp.Handler;
 type HandlerEvent = AWSLambda.APIGatewayProxyEvent | AWSLambda.APIGatewayProxyEventV2;
+type HandlerResult = AWSLambda.APIGatewayProxyResult | AWSLambda.APIGatewayProxyStructuredResultV2;
 type HandlerContext = AWSLambda.Context;
 
-export async function handler(event: HandlerEvent, context: HandlerContext) {
+export async function handler(event: HandlerEvent, context: HandlerContext): Promise<HandlerResult> {
   if (!hdlr) {
-    hdlr = serverless(server);
+    hdlr = ServerlessHttp(server);
   }
 
   const res = await hdlr(event, context);
