@@ -1,5 +1,5 @@
 // modern module syntax
-export async function main(event: unknown, context: unknown, callback: Function) {
+export async function handler(event: unknown, context: unknown, callback: Function) {
   const response = {
     statusCode: 200,
     body: JSON.stringify({
