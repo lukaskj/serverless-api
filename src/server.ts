@@ -1,12 +1,11 @@
 import { createExpressServer } from "routing-controllers";
-import { IndexController } from "./controllers/IndexController";
-import { ResultInterceptor } from "./interceptors/ResultInterceptor";
+import controllers from "./controllers";
+import interceptors from "./interceptors";
 
 const server = createExpressServer({
   cors: true,
-  controllers: [IndexController],
-  // middlewares: [ResultMiddleware],
-  interceptors: [ResultInterceptor],
+  controllers,
+  interceptors,
   // controllers: [__dirname + "/controllers/*{.js,.ts}"],
   // middlewares: [__dirname + "/middlewares/*{.js,.ts}"],
 });
