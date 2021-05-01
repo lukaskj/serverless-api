@@ -1,23 +1,10 @@
-import Koa from "koa";
-import Router from "@koa/router";
-import json from "koa-json";
-import bodyParser from "koa-bodyparser";
-import cors from "@koa/cors";
+import { createExpressServer } from "routing-controllers";
+import { IndexController } from "./controllers/IndexController";
 
-const server = new Koa();
-
-server.use(cors());
-server.use(bodyParser());
-server.use(json());
-
-const router = new Router();
-router.get("/", async (ctx, next) => {
-  ctx.body = {
-    success: true,
-  };
-  await next();
+const server = createExpressServer({
+  controllers: [IndexController],
+  // controllers: [__dirname + "/controllers/*{.js,.ts}"],
+  // middlewares: [__dirname + "/middlewares/*{.js,.ts}"],
 });
-
-server.use(router.routes());
 
 export { server };
