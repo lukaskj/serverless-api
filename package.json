@@ -2,11 +2,13 @@
   "scripts": {
     "prepare": "husky install",
     "clean": "rm -rf .build .serverless",
-    "build": "tsc -p .",
+    "build": "yarn lint && tsc -p .",
     "offline": "yarn clean && serverless offline",
     "deploy": "yarn clean && serverless deploy",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest tests"
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "test": "jest tests",
+    "local": "ts-node src/localServer.ts"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
