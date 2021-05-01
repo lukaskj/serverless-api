@@ -5,7 +5,8 @@
     "build": "tsc -p .",
     "offline": "yarn clean && serverless offline",
     "deploy": "yarn clean && serverless deploy",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest tests"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",

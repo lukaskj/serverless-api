@@ -2,11 +2,11 @@
   "clearMocks": true,
   "collectCoverage": true,
   "coverageDirectory": "reports/coverage",
-  "collectCoverageFrom": ["src/**/*.ts"],
+  "collectCoverageFrom": ["src/**/*.ts", "!src/app.ts", "!src/server.ts"],
   "coverageReporters": [["text", { "skipFull": true }], "text-summary", "lcov"],
   "preset": "ts-jest",
   "testEnvironment": "node",
-  "testPathIgnorePatterns": ["node_modules", "dist"],
+  "testPathIgnorePatterns": ["node_modules", "dist", ".build", "src/index.ts", "src/server.ts"],
   "setupFiles": ["./tests/jest-setup-file.ts"],
   "silent": false
 }
