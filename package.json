@@ -1,4 +1,5 @@
 {
+  "license": "MIT",
   "scripts": {
     "prepare": "husky install",
     "clean": "rm -rf .build .serverless",
