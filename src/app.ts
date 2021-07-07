@@ -12,7 +12,5 @@ export async function handler(event: HandlerEvent, context: HandlerContext): Pro
     hdlr = ServerlessHttp(server);
   }
 
-  const res = await hdlr(event, context);
-
-  return res;
+  return await hdlr(event, context);
 }
