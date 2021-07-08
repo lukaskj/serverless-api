@@ -18,6 +18,27 @@
 ```bash
 $ yarn
 ```
+## # TypeORM
+### Config:
+`.env` file (see .env.example)
+### Directories:
+- Entities: `src/database/entities`
+- Migrations: `src/database/entities`
+### Commands:
+- Generate migrations:
+```bash
+$ yarn typeorm:migrate [migration name]
+```
+
+- Running migrations:
+```bash
+$ yarn typeorm:run
+```
+
+- General TypeORM commands:
+```bash
+$ yarn typeorm
+```
 
 ## # Running
 
