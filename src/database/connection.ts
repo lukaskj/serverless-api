@@ -5,7 +5,7 @@ import {
   createConnection,
   getConnectionManager,
 } from "typeorm";
-import env from "../utils/env";
+import { env } from "../utils/env";
 import { ConnectionType } from "./types";
 
 export class Connection {

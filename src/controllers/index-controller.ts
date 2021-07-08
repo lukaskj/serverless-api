@@ -1,7 +1,7 @@
 import { Get, JsonController } from "routing-controllers";
 import { Result, ResultSuccess } from "../contracts/result/result";
 import { Injectable } from "../contracts/injectable";
-import env from "../utils/env";
+import { env } from "../utils/env";
 
 @JsonController()
 @Injectable()
