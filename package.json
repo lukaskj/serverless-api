@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "test": "jest tests",
+    "test:watch": "jest tests --runInBand --collectCoverage false --watch",
     "local": "ts-node src/localServer.ts",
     "remove": "serverless remove",
     "down": "serverless remove"
