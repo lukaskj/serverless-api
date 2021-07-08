@@ -8,10 +8,10 @@ type EnvType = {
 export class Env {
   private static envObject: EnvType = {};
 
-  public static warmup(): void {
+  public static warmup(envFile = "env.json"): void {
     const baseDir = process.cwd();
 
-    const envFilePath = path.join(baseDir, "env.json");
+    const envFilePath = path.join(baseDir, envFile);
 
     if (fs.existsSync(envFilePath)) {
       Env.envObject = JSON.parse(fs.readFileSync(envFilePath).toString());
