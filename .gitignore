@@ -6,3 +6,4 @@
 .env
 package.old.json
 .serverless
+env.json
