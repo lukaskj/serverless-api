@@ -27,7 +27,7 @@ $ yarn
 $ yarn offline
 ```
 
-- Local server (Lambda mock)
+- Local server (default express)
 
 ```
 $ yarn local
