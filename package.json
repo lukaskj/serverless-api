@@ -4,7 +4,7 @@
     "prepare": "husky install",
     "clean": "rm -rf .build .serverless",
     "copy": "mkdir -p .build && cp env.json .build",
-    "build": "yarn lint && tsc -p .",
+    "build": "yarn lint && tsc -p . && yarn copy",
     "offline": "yarn clean && serverless offline",
     "deploy": "yarn clean && yarn copy && serverless deploy",
     "lint": "eslint . --ext .ts,.tsx",
