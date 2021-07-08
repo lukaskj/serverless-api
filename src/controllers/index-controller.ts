@@ -1,13 +1,19 @@
 import { Get, JsonController } from "routing-controllers";
-import { Result, ResultSuccess } from "../contracts/result/result";
 import { Injectable } from "../contracts/injectable";
+import { Result, ResultSuccess } from "../contracts/result/result";
+import { Connection } from "../database/connection";
+import { User } from "../database/entities/User";
 import { env } from "../utils/env";
 
 @JsonController()
 @Injectable()
 export class IndexController {
   @Get("/")
-  index(): Result<unknown> {
-    return new ResultSuccess<string>(env<string>("test_var", "not ok"));
+  async index(): Promise<Result<unknown>> {
+    await Connection.connect();
+    const user = await User.find();
+    console.log(user);
+    // (await Connection.get()).getRepository(User).find({ id: "1" });
+    return new ResultSuccess<string>(env<string>("TEST", "not ok"));
   }
 }

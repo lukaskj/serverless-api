@@ -11,7 +11,11 @@ import { ConnectionType } from "./types";
 export class Connection {
   private static manager: ConnectionManager = getConnectionManager();
 
-  public static async get(): Promise<Connection> {
+  public static async connect(): Promise<TypeConnection> {
+    return Connection.get();
+  }
+
+  public static async get(): Promise<TypeConnection> {
     const CONNECTION_NAME = "default";
     let connection: TypeConnection;
     if (Connection.manager.has(CONNECTION_NAME)) {
@@ -22,26 +26,33 @@ export class Connection {
     } else {
       const connectionOptions = this.getConnectionOptions();
       connection = await createConnection(connectionOptions);
+      if (!connection.isConnected) {
+        connection = await connection.connect();
+      }
     }
 
     return connection;
   }
 
-  private static getConnectionOptions(): ConnectionOptions {
-    const options: ConnectionOptions = {
+  public static getConnectionOptions(): ConnectionOptions {
+    return {
       name: "default",
-      type: env<ConnectionType>("DB_TYPE"),
-      synchronize: env<boolean>("DB_SYNC", true),
-      logging: env<boolean>("DB_SYNC", true),
-      host: env<string>("DB_HOST", "localhost"),
-      port: env<number>("DB_PORT", 3306),
-      username: env<string>("DB_USERNAME", "root"),
-      password: env<string>("DB_PASSWORD", ""),
-      database: env<string>("DB_DATABASE", ""),
-    };
-    if (options.cli) {
-      console.log(options);
-    }
-    return options;
+      type: env<ConnectionType>("TYPEORM_CONNECTION"),
+      host: env<string>("TYPEORM_HOST", "localhost"),
+      port: env<number>("TYPEORM_PORT", 3306),
+      username: env<string>("TYPEORM_USERNAME", "root"),
+      password: env<string>("TYPEORM_PASSWORD", ""),
+      database: env<string>("TYPEORM_DATABASE", ""),
+      synchronize: env<boolean>("TYPEORM_SYNCHRONIZE", true),
+      logging: env<boolean>("TYPEORM_LOGGING", true),
+      entities: [__dirname + "/entities/**/*.{ts,js}"],
+      migrations: [__dirname + "/migrations/**/*.{ts,js}"],
+      subscribers: [__dirname + "/subscribers/**/*.{ts,js}"],
+      cli: {
+        entitiesDir: __dirname + "/entities/",
+        migrationsDir: __dirname + "/migrations/",
+        subscribersDir: __dirname + "/subscribers/",
+      },
+    } as ConnectionOptions;
   }
 }

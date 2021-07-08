@@ -55,9 +55,9 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-package:
-  patterns:
-    - env.json
+#package:
+#  patterns:
+#    - env.json
 #    - '!exclude-me.js'
 #    - '!exclude-me-dir/**'
 #    - include-me.js
