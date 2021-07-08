@@ -1,0 +1,16 @@
+export type ConnectionType =
+  | "mysql"
+  | "mariadb"
+  | "postgres"
+  | "cockroachdb"
+  | "sqlite"
+  | "mssql"
+  | "sap"
+  | "oracle"
+  // | "cordova"
+  // | "nativescript"
+  // | "react-native"
+  // | "sqljs"
+  | "mongodb"
+  // | "expo"
+  | "better-sqlite3";
