@@ -3,7 +3,7 @@
   "scripts": {
     "prepare": "husky install",
     "clean": "rm -rf .build .serverless",
-    "copy": "mkdir .build && cp .env .build/",
+    "copy": "cp .env .build/",
     "build": "yarn lint && tsc -p . && yarn copy",
     "offline": "yarn clean && serverless offline",
     "deploy": "yarn clean && yarn copy && serverless deploy",
