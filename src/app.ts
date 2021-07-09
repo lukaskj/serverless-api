@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { server } from "./server";
+import { createServer } from "./server";
 import ServerlessHttp from "serverless-http";
 // Cache
 let hdlr: ServerlessHttp.Handler;
@@ -9,7 +9,7 @@ type HandlerContext = AWSLambda.Context;
 
 export async function handler(event: HandlerEvent, context: HandlerContext): Promise<HandlerResult> {
   if (!hdlr) {
-    hdlr = ServerlessHttp(server);
+    hdlr = ServerlessHttp(await createServer());
   }
 
   return await hdlr(event, context);
