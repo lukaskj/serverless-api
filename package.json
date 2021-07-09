@@ -3,7 +3,7 @@
   "scripts": {
     "prepare": "husky install",
     "clean": "rm -rf .build .serverless",
-    "copy": "mkdir -p .build && cp env.json .build",
+    "copy": "mkdir .build && cp .env .build/",
     "build": "yarn lint && tsc -p . && yarn copy",
     "offline": "yarn clean && serverless offline",
     "deploy": "yarn clean && yarn copy && serverless deploy",
@@ -13,7 +13,11 @@
     "test:watch": "jest tests --runInBand --collectCoverage false --watch",
     "local": "ts-node src/localServer.ts",
     "remove": "serverless remove",
-    "down": "serverless remove"
+    "down": "serverless remove",
+    "typeorm": "cross-env NODE_ENV=migration ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "typeorm:migrate": "yarn run typeorm migration:generate -n",
+    "typeorm:run": "yarn run typeorm migration:run",
+    "typeorm:revert": "yarn run typeorm migration:revert"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.1",
@@ -23,6 +27,7 @@
     "@types/node": "^16.0.1",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
+    "cross-env": "^7.0.3",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
