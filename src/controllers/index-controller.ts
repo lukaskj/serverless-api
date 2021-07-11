@@ -8,6 +8,6 @@ import { env } from "../utils/env";
 export class IndexController {
   @Get("/")
   index(): Result<unknown> {
-    return new ResultSuccess<string>(env<string>("test_var", "not ok"));
+    return new ResultSuccess<string>(env<string>("TYPEORM_PORT", "not ok"));
   }
 }

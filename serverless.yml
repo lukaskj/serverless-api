@@ -56,16 +56,17 @@ provider:
 
 # you can add packaging information here
 package:
-  patterns:
-    - env.json
+  individually: true
+#  patterns:
+#    - env.json
 #    - '!exclude-me.js'
 #    - '!exclude-me-dir/**'
 #    - include-me.js
 #    - include-me-dir/**
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-offline
+  - serverless-webpack
 
 functions:
   api:
@@ -125,3 +126,10 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    packager: 'yarn'
+    includeModules:
+      forceInclude:
+        - cors
