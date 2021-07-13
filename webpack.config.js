@@ -40,10 +40,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [".env"],
-    }),
-  ],
+  plugins: [new ForkTsCheckerWebpackPlugin()],
 };
