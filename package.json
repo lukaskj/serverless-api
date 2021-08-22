@@ -2,7 +2,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "clean": "rm -rf .build .serverless",
+    "clean": "rm -rf .build .serverless && mkdir .build",
     "copy": "cp .env .build/",
     "build": "yarn lint && tsc -p . && yarn copy",
     "offline": "yarn clean && yarn copy && serverless offline",
