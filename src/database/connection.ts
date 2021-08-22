@@ -37,7 +37,7 @@ export class Connection {
   public static getConnectionOptions(): ConnectionOptions {
     return {
       name: "default",
-      type: env<ConnectionType>("TYPEORM_CONNECTION"),
+      type: env<ConnectionType>("TYPEORM_DRIVER"),
       host: env<string>("TYPEORM_HOST", "localhost"),
       port: env<number>("TYPEORM_PORT", 3306),
       username: env<string>("TYPEORM_USERNAME", "root"),

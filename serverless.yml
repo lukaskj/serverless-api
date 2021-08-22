@@ -74,6 +74,21 @@ functions:
       - httpApi:
           path: /{any+}
           method: "*"
+#    Define function environment variables here
+    environment:
+      TYPEORM_CONNECTION: ${env:TYPEORM_CONNECTION}
+      TYPEORM_DRIVER: ${env:TYPEORM_DRIVER}
+      TYPEORM_HOST: ${env:TYPEORM_HOST}
+      TYPEORM_PORT: ${env:TYPEORM_PORT}
+      TYPEORM_DATABASE: ${env:TYPEORM_DATABASE}
+      TYPEORM_USERNAME: ${env:TYPEORM_USERNAME}
+      TYPEORM_PASSWORD: ${env:TYPEORM_PASSWORD}
+      TYPEORM_SYNCHRONIZE: ${env:TYPEORM_SYNCHRONIZE}
+      TYPEORM_LOGGING: ${env:TYPEORM_LOGGING}
+      TYPEORM_ENTITIES: ${env:TYPEORM_ENTITIES}
+      TYPEORM_MIGRATIONS: ${env:TYPEORM_MIGRATIONS}
+      TYPEORM_ENTITIES_DIR: ${env:TYPEORM_ENTITIES_DIR}
+      TYPEORM_MIGRATIONS_DIR: ${env:TYPEORM_MIGRATIONS_DIR}
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -110,11 +125,35 @@ functions:
 #            host: example.com
 #            path: /hello
 
-#    Define function environment variables here
-#    environment:
-#      variable2: value2
 
+# Example with RDS
+# environment:
+  #TYPEORM_HOST: ${self:custom.TYPEORM.HOST}
+  #TYPEORM_PORT: ${self:custom.TYPEORM.PORT}
+  #TYPEORM_DRIVER: ${env:TYPEORM_DRIVER}
+
+#custom:
+#  TYPEORM:
+#    HOST:
+#      Fn::GetAtt: [DatabaseResource, Endpoint.Address]
+#    PORT:
+#      Fn::GetAtt: [DatabaseResource, Endpoint.Port]
 # you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    DatabaseResource:
+#    # Settings https://amzn.to/2FygWeb
+#      Type: AWS::RDS::DBCluster
+#      Properties:
+#        Engine: aurora
+#        EngineMode: serverless
+#        Port: 3306
+#        DatabaseName: database_test
+#        MasterUsername: test
+#        MasterUserPassword: test
+#        ScalingConfiguration:
+#          AutoPause: true
+#          SecondsUntilAutoPause: 300
 #resources:
 #  Resources:
 #    NewResource:
