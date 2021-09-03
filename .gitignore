@@ -4,6 +4,9 @@
 .build
 /reports/
 .env
+env.json
 package.old.json
 .serverless
-env.json
+.webpack
+.webpackCache
+yarn-error.log

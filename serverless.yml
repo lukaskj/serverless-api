@@ -50,12 +50,13 @@ provider:
   #            - "Ref" : "ServerlessDeploymentBucket"
   #            - "/*"
 
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  # you can define service wide environment variables here
+  environment:
+    TYPEORM_PORT: ${env:TYPEORM_PORT}
 
 # you can add packaging information here
-#package:
+package:
+  individually: true
 #  patterns:
 #    - env.json
 #    - '!exclude-me.js'
@@ -64,8 +65,8 @@ provider:
 #    - include-me-dir/**
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-offline
+  - serverless-webpack
 
 functions:
   api:
@@ -164,3 +165,10 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+custom:
+  webpack:
+    webpackConfig: "webpack.config.js"
+    packager: "yarn"
+    includeModules:
+      forceInclude:
+        - cors
